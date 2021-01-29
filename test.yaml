@@ -1,0 +1,51 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: web
+  namespace: default
+  uid: 8adacd5f-f7c6-4c9a-a562-750347ea7022
+  resourceVersion: '23766'
+  creationTimestamp: '2021-01-29T01:16:53Z'
+  labels:
+    app: web
+  managedFields:
+    - manager: kubectl-expose
+      operation: Update
+      apiVersion: v1
+      time: '2021-01-29T01:16:53Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:labels':
+            .: {}
+            'f:app': {}
+        'f:spec':
+          'f:externalTrafficPolicy': {}
+          'f:ports':
+            .: {}
+            'k:{"port":8080,"protocol":"TCP"}':
+              .: {}
+              'f:port': {}
+              'f:protocol': {}
+              'f:targetPort': {}
+          'f:selector':
+            .: {}
+            'f:app': {}
+          'f:sessionAffinity': {}
+          'f:type': {}
+spec:
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+      nodePort: 32153
+  selector:
+    app: web
+  clusterIP: 10.96.113.124
+  clusterIPs:
+    - 10.96.113.124
+  type: NodePort
+  sessionAffinity: None
+  externalTrafficPolicy: Cluster
+status:
+  loadBalancer: {}

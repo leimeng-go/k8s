@@ -1,18 +1,17 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: argoci
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /$1
+  name: argoci-ingress
+  namespace: argo
 spec:
   rules:
     - host: argo.leimeng.com
-      http: 
+      http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: argo-server
-                port: 
-                  number: 2746
+                name: argocd-server
+                port:
+                  number: 443

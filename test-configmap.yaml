@@ -1,8 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: env-config
-  namespace: default
-data:
-  SUPERHERO: Superman
-  VILLAIN: Lex Luthor

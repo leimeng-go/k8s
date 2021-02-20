@@ -34,15 +34,17 @@ spec:
       # es: log
       containers:
       - name: kibana
-        image: kibana:latest 
+        image: docker.elastic.co/kibana/kibana:7.6.2
       # 当前使用minikube 两核cpu 屏蔽cpu资源默认分配
-        # resources:
-        #   limits: 
-        #     cpu: 1000m
-        #   requests:
-        #     cpu: 1000m
+        resources:
+          limits: 
+            cpu: 1000m
+          requests:
+            cpu: 100m
         env:
         - name: ELASTICSEARCH_HOSTS
           value: http://elasticsearch:9200
+        - name: ELASTICSEARCH_URL
+          value: http://elasticsearch:9200  
         ports:
         - containerPort: 5601   

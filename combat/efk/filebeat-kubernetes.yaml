@@ -42,9 +42,27 @@ data:
     - type: docker
       containers.ids:
       - "*"
+      include_lines: ['^counter']
       processors:
         - add_kubernetes_metadata:
             in_cluster: true
+            default_indexers.enabled: true         
+            default_matchers.enabled: true
+        # - drop_fields:
+        #     fields:
+        #     - "@metadata"
+        #     - "beat"
+        #     - "kubernetes.labels"
+        #     - "kubernetes.container"
+        #     - "kubernetes.annotations"
+        #     - "host"
+        #     - "prospector"
+        #     - "input"
+        #     - "offset"
+        #     - "stream"
+        #     - "source  
+       
+                  
 ---
 apiVersion: apps/v1
 kind: DaemonSet

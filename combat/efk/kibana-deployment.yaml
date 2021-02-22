@@ -1,21 +1,22 @@
-apiVersion: v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: kibana-logging
+  name: kibana
   namespace: logging
   labels:
-    k8s-app: kibana-logging
+    k8s-app: kibana
 spec:
   replicas: 1
   selector:
-      k8s-app: kibana-logging
+    matchLabels:
+      k8s-app: kibana
   template:
     metadata:
       labels:
-        k8s-app: kibana-logging
+        k8s-app: kibana
     spec:
       containers:
-      - name: kibana-logging
+      - name: kibana
         image: docker.elastic.co/kibana/kibana:7.6.2
         resources:
           limits: 
@@ -26,7 +27,7 @@ spec:
             memory: 200Mi
         env:    
         - name: ELASTICSEARCH_HOSTS
-          value: http://elasticsearch-logging:9200    
+          value: http://elasticsearch:9200    
         ports:
         - containerPort: 5601
           name: ui

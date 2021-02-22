@@ -1,19 +1,20 @@
-apiVersion: v1
+apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: elasticsearch-logging
+  name: elasticsearch
   namespace: logging
   labels:
-    k8s-app: elasticsearch-logging
+    k8s-app: elasticsearch
 spec:
-  # serviceName: elasticsearch
+  serviceName: elasticsearch
   replicas: 1
   selector:
-    k8s-app: elasticsearch-logging
+    matchLabels:
+      k8s-app: elasticsearch
   template:
     metadata:
       labels: 
-        k8s-app: elasticsearch-logging
+        k8s-app: elasticsearch
     spec:
       containers:
       - name: elasticsearch
@@ -57,4 +58,4 @@ spec:
       accessModes: [ "ReadWriteOnce" ]
       resources:
         requests:
-          storage: 20Gi          
+          storage: 5Gi          

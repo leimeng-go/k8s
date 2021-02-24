@@ -4,11 +4,11 @@ metadata:
   name: prometheus-config
   namespace: kube-ops
 data: 
-  prometheus-yml: | 
+  prometheus.yml: | 
     global:
       scrape_interval: 15s
       scrape_timeout: 15s
-    scrape_config:
+    scrape_configs:
     - job_name: "prometheus"      
-      static_config:
+      static_configs:
       - targets: ["localhost:9090"]  

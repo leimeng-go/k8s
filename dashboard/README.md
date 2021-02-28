@@ -9,3 +9,6 @@
 代理仓库，拉取下来后使用docker tag重新打标签,我这里是执行替换镜像文件的地址。
 
 #### 2.证书
+安装dashboard 成功
+![](./dashboard_pod.PNG)
+

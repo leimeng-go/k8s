@@ -1,0 +1,29 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: kubernetes-dashboard
+  labels:
+    k8s-app: kubernetes-dashboard
+rules:
+  - apiGroups: ["metrics.k8s.io"]    
+    resources: ["pods","nodes"]
+    verbs: ["get","list","watch"]
+  - apiGroups: [""]  
+    resources: ["namespaces","nodes","services","pods","configmaps","secrets","roles","rolebindings","ingresses","persistentvolumes","events","persistentvolumeclaims"]
+    verbs: ["get","list","watch"]
+  - apiGroups: ["batch"]  
+    resources: ["cronjobs","jobs"]
+    verbs: ["get","list","watch"]
+  - apiGroups: ["rbac.authorization.k8s.io"]  
+    resources: ["clusterroles"]
+    verbs: ["get","list","watch"]
+  - apiGroups: ["storage.k8s.io"] 
+    resources: ["storageclasses"] 
+    verbs: ["get","list","watch"]
+  - apiGroups: ["apps"]  
+    resources: ["daemonsets","replicasets","deployments"]
+    verbs: ["get","list","watch"]
+  - apiGroups: ["autoscaling"]
+    resources:
+      
+

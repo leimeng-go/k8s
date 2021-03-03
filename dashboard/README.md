@@ -11,4 +11,5 @@
 #### 2.证书
 安装dashboard 成功
 ![](./dashboard_pod.PNG)
+访问
 

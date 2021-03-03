@@ -8,31 +8,6 @@ metadata:
   creationTimestamp: '2021-01-29T01:16:53Z'
   labels:
     app: web
-  managedFields:
-    - manager: kubectl-expose
-      operation: Update
-      apiVersion: v1
-      time: '2021-01-29T01:16:53Z'
-      fieldsType: FieldsV1
-      fieldsV1:
-        'f:metadata':
-          'f:labels':
-            .: {}
-            'f:app': {}
-        'f:spec':
-          'f:externalTrafficPolicy': {}
-          'f:ports':
-            .: {}
-            'k:{"port":8080,"protocol":"TCP"}':
-              .: {}
-              'f:port': {}
-              'f:protocol': {}
-              'f:targetPort': {}
-          'f:selector':
-            .: {}
-            'f:app': {}
-          'f:sessionAffinity': {}
-          'f:type': {}
 spec:
   ports:
     - protocol: TCP

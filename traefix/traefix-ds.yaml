@@ -17,9 +17,11 @@ spec:
         name: traefik-ingress-lb-v2
     spec:
       serviceAccountName: traefik-ingress-controller
+      tolerations:
+      - operator: "Exists"
       terminationGracePeriodSeconds: 60
       containers:
-      - image: traefik:2.1.6
+      - image: traefik:2.0
         name: traefik-ingress-lb-v2
         ports:
         - name: http

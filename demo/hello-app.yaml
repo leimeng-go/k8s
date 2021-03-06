@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-app
+  namespace: default
+  labels:
+    app: hello-app
+spec:
+  selector:
+    matchLabels:
+      app: hello-app
+  template:
+    metadata:
+      labels:
+        app: hello-app
+    spec: 
+      containers:
+        - image: hansd/hello-app
+          name: hello-app
+          ports:
+          - name: web 
+            containerPort: 8080
+            protocol: TCP 
+
+---
+apiVersion: v1
+kind: Service            
+metadata:
+  name: hello-app
+  namespace: default
+  labels: 
+    app: hello-app
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: hello-app
+
+---    
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: hello-app
+  namespace: default
+  labels:
+    app: hello-app
+spec:
+  rules:
+    - host: hello.leimeng.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: hello-app
+                port:
+                  number: 8080  
+
+
+
